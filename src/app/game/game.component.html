@@ -1,0 +1,18 @@
+<div class="question q{{ questionIndex + 1 }}" *ngIf="currentQuestion">
+  <h2>#{{ questionIndex + 1 }} {{ currentQuestion.topic }}</h2>
+
+  <div class="clues">
+    <ng-container *ngFor="let clue of currentQuestion?.clues; let i = index">
+      <div class="clue clue{{ clueIndex }}" *ngIf="clueIndex > i">
+        <img *ngIf="clue.img" [src]="clue.img" alt="Clue Image" />
+        <p *ngIf="clue.text">{{ clue.text }}</p>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="teams">
+    <div *ngFor="let team of teams">
+      {{ team }}
+    </div>
+  </div>
+</div>

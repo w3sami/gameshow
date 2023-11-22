@@ -1,0 +1,20 @@
+<div class="host-controls">
+  <button (click)="previousQuestion()">Previous Question</button>
+  <button (click)="nextQuestion()">Next Question</button>
+  <button (click)="previousClue()">Previous Clue</button>
+  <button (click)="nextClue()">Next Clue</button>
+  <button
+    (click)="
+      questionsService.updateTeamNameMode(!questionsService.teamNameMode)
+    "
+  >
+    team name mode
+    <span *ngIf="questionsService.teamNameMode">ON</span>
+  </button>
+</div>
+<div class="team-scores">
+  <div *ngFor="let team of questionsService.teams">
+    {{ team }}
+    <button (click)="questionsService.removeTeam(team)">remove</button>
+  </div>
+</div>
