@@ -2,7 +2,7 @@
   <div *ngIf="teamName">Tiimi: {{ teamName }}</div>
   <div *ngIf="questionsService.teamNameMode">
     <h2>Anna tiimin nimi</h2>
-    <input type="text" [(ngModel)]="input" />
+    <input type="text" [(ngModel)]="input" (keyup.enter)="submit()" />
     <button (click)="submit()">Lähetä</button>
   </div>
   <div *ngIf="!questionsService.teamNameMode">
@@ -11,11 +11,14 @@
       {{ questionsService.currentQuestion.topic }}
     </h2>
 
-    <div *ngIf="questionsService.clueIndex">
+    <div *ngIf="questionsService.clueIndex && teamName">
       <h2>Anna vastaus {{ questionsService.clueIndex }}</h2>
-      <input type="text" [(ngModel)]="input" />
+      <input type="text" [(ngModel)]="input" (keyup.enter)="submit()" />
       <button (click)="submit()">Lähetä</button>
-      <div>Tämän hetken vastaus: {{ getCurrentAnswer() }}</div>
+      <div *ngIf="getCurrentAnswer()" (click)="copyAnswer()">
+        Tämän hetken vastaus: <b>{{ getCurrentAnswer() }}</b> (klikkaa
+        muuttaaksesi)
+      </div>
     </div>
   </div>
 </div>

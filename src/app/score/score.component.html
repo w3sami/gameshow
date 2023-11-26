@@ -15,7 +15,7 @@
     <div
       *ngFor="let clue of getClueKeys()"
       [class.correct]="questionsService.answers[questionsService.questionIndex]?.[team]?.[clue]?.correct"
-      (click)="questionsService.correctAnswer(team, clue)"
+      (click)="enableEditing && questionsService.correctAnswer(team, clue)"
     >
       {{ questionsService.answers[questionsService.questionIndex]?.[team]?.[clue]?.answer }}
     </div>

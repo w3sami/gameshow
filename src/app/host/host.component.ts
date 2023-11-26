@@ -9,6 +9,8 @@ import { IAnswer, QuestionsService } from '../shared/questions.service';
 export class HostComponent {
   constructor(public questionsService: QuestionsService) {}
 
+  public input: string = '';
+
   nextQuestion() {
     const newIndex = this.questionsService.questionIndex + 1;
     if (newIndex < this.questionsService.questions.length) {

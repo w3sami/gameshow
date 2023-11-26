@@ -41,6 +41,9 @@ export class QuestionsService {
   public teamNameMode = false;
   public scoreMode = false;
   public answers: IAnswers = {};
+  public password = '';
+  public passwordLoaded = false;
+
   public questions: IQuestion[] = [
     {
       topic: 'a celebrity',
@@ -103,6 +106,8 @@ export class QuestionsService {
           this.answers = data.answers;
           this.teamNameMode = data.teamNameMode;
           this.scoreMode = data.scoreMode;
+          this.password = data.password;
+          this.passwordLoaded = true;
         }
       });
   }

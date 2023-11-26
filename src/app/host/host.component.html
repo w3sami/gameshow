@@ -1,30 +1,39 @@
-<div class="host-controls">
-  <button (click)="previousQuestion()">Previous Question</button>
-  <button (click)="nextQuestion()">Next Question</button>
-  <button (click)="previousClue()">Previous Clue</button>
-  <button (click)="nextClue()">Next Clue</button>
-  <button
-    (click)="
-      questionsService.updateTeamNameMode(!questionsService.teamNameMode)
-    "
-  >
-    team name mode
-    <span *ngIf="questionsService.teamNameMode">ON</span>
-  </button>
-  <button
-    (click)="questionsService.updateScoreMode(!questionsService.scoreMode)"
-  >
-    score mode
-    <span *ngIf="questionsService.scoreMode">ON</span>
-  </button>
-</div>
+<input [(ngModel)]="input" *ngIf="questionsService.password != input" />
 <div
-  class="question q{{ questionsService.questionIndex + 1 }}"
-  *ngIf="questionsService.currentQuestion"
+  *ngIf="questionsService.passwordLoaded && questionsService.password == input"
 >
-  <h2>
-    #{{ questionsService.questionIndex + 1 }} ({{ questionsService.clueIndex }})
-    {{ questionsService.currentQuestion.topic }}
-  </h2>
-  <app-score></app-score>
+  <div class="host-controls">
+    <button (click)="previousQuestion()">Previous Question</button>
+    <button (click)="nextQuestion()">Next Question</button>
+    <button (click)="previousClue()">Previous Clue</button>
+    <button (click)="nextClue()">Next Clue</button>
+    <button
+      class="right"
+      (click)="
+        questionsService.updateTeamNameMode(!questionsService.teamNameMode)
+      "
+    >
+      team name mode
+      <span *ngIf="questionsService.teamNameMode">ON</span>
+    </button>
+    <button
+      class="right"
+      (click)="questionsService.updateScoreMode(!questionsService.scoreMode)"
+    >
+      score mode
+      <span *ngIf="questionsService.scoreMode">ON</span>
+    </button>
+  </div>
+  <div
+    class="question q{{ questionsService.questionIndex + 1 }}"
+    *ngIf="questionsService.currentQuestion"
+  >
+    <h2>
+      #{{ questionsService.questionIndex + 1 }} ({{
+        questionsService.clueIndex
+      }})
+      {{ questionsService.currentQuestion.topic }}
+    </h2>
+    <app-score [enableEditing]="true"></app-score>
+  </div>
 </div>

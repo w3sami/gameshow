@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IAnswer, QuestionsService } from '../shared/questions.service';
 
 @Component({
@@ -7,6 +7,8 @@ import { IAnswer, QuestionsService } from '../shared/questions.service';
   styleUrls: ['./score.component.scss'],
 })
 export class ScoreComponent implements OnInit {
+  @Input() enableEditing: boolean = false;
+
   public clues: IAnswer = {
     clue1: { points: 0 },
     clue2: { points: 0 },

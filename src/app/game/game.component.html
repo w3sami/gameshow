@@ -36,7 +36,7 @@
   <app-score *ngIf="questionsService.scoreMode"></app-score>
 </div>
 <div class="question" *ngIf="questionsService.teamNameMode">
-  <img class="qr" src="assets/qr.png" alt="QR Code" />
+  <div class="qr"><img src="assets/qr.png" alt="QR Code" /></div>
   <div class="teams" *ngIf="!questionsService.scoreMode">
     <div
       *ngFor="let team of questionsService.teams"

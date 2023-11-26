@@ -22,6 +22,11 @@ export class PlayerComponent {
     ]?.[clueIndex]?.answer;
   }
 
+  copyAnswer() {
+    if (!this.input) {
+      this.input = this.getCurrentAnswer() || '';
+    }
+  }
   submit() {
     if (this.input) {
       if (this.questionsService.teamNameMode) {
