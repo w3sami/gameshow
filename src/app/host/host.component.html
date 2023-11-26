@@ -11,10 +11,20 @@
     team name mode
     <span *ngIf="questionsService.teamNameMode">ON</span>
   </button>
+  <button
+    (click)="questionsService.updateScoreMode(!questionsService.scoreMode)"
+  >
+    score mode
+    <span *ngIf="questionsService.scoreMode">ON</span>
+  </button>
 </div>
-<div class="team-scores">
-  <div *ngFor="let team of questionsService.teams">
-    {{ team }}
-    <button (click)="questionsService.removeTeam(team)">remove</button>
-  </div>
+<div
+  class="question q{{ questionsService.questionIndex + 1 }}"
+  *ngIf="questionsService.currentQuestion"
+>
+  <h2>
+    #{{ questionsService.questionIndex + 1 }} ({{ questionsService.clueIndex }})
+    {{ questionsService.currentQuestion.topic }}
+  </h2>
+  <app-score></app-score>
 </div>

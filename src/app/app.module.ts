@@ -11,9 +11,10 @@ import { GameComponent } from './game/game.component';
 import { HostComponent } from './host/host.component';
 import { PlayerComponent } from './player/player.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ScoreComponent } from './score/score.component';
 
 @NgModule({
-  declarations: [AppComponent, GameComponent, HostComponent, PlayerComponent],
+  declarations: [AppComponent, GameComponent, HostComponent, PlayerComponent, ScoreComponent],
   imports: [
     BrowserModule,
     FormsModule,

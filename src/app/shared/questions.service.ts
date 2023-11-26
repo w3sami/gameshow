@@ -11,11 +11,16 @@ export interface IQuestion {
   clues: IClue[];
 }
 
-interface IAnswer {
-  clue1?: string;
-  clue2?: string;
-  clue3?: string;
-  clue4?: string;
+export interface IAnswerObject {
+  answer?: string;
+  correct?: boolean;
+  points: number;
+}
+export interface IAnswer {
+  clue1?: IAnswerObject;
+  clue2?: IAnswerObject;
+  clue3?: IAnswerObject;
+  clue4?: IAnswerObject;
 }
 
 interface ITeamAnswers {
@@ -34,6 +39,7 @@ export class QuestionsService {
   public clueIndex = 0;
   public teams: string[] = [];
   public teamNameMode = false;
+  public scoreMode = false;
   public answers: IAnswers = {};
   public questions: IQuestion[] = [
     {
@@ -77,6 +83,7 @@ export class QuestionsService {
             teams: [],
             answers: {},
             teamNameMode: false,
+            scoreMode: false,
             // Add any other initial fields here
           });
         }
@@ -95,6 +102,7 @@ export class QuestionsService {
           this.teams = data.teams;
           this.answers = data.answers;
           this.teamNameMode = data.teamNameMode;
+          this.scoreMode = data.scoreMode;
         }
       });
   }
@@ -118,6 +126,11 @@ export class QuestionsService {
     this.updateFirestore();
   }
 
+  updateScoreMode(value: boolean) {
+    this.scoreMode = value;
+    this.updateFirestore();
+  }
+
   private updateFirestore() {
     this.firestore
       .collection('c4')
@@ -128,6 +141,7 @@ export class QuestionsService {
         teams: this.teams,
         answers: this.answers,
         teamNameMode: this.teamNameMode,
+        scoreMode: this.scoreMode,
       })
       .catch((error: any) => {
         console.error('Error updating Firestore: ', error);
@@ -169,9 +183,41 @@ export class QuestionsService {
       this.answers[questionIndex][teamName] = {};
     }
 
-    console.log(this.answers);
-
-    this.answers[questionIndex][teamName][clueKey] = answer;
+    this.answers[questionIndex][teamName][clueKey] = { answer, points: 0 };
     this.updateFirestore();
+  }
+
+  correctAnswer(team: string, clue: keyof IAnswer) {
+    const answer = this.answers[this.questionIndex]?.[team]?.[clue];
+    if (answer) {
+      answer.correct = !answer.correct;
+      answer.points = answer.correct ? 5 - Number(clue.substring(4, 5)) : 0;
+      this.updateFirestore();
+    }
+  }
+
+  answerPoints(team: string, questionIndex?: number): number {
+    const answer = this.answers[
+      questionIndex !== undefined ? questionIndex : this.questionIndex
+    ]?.[team];
+    if (answer) {
+      return (
+        (answer.clue1?.points ?? 0) +
+        (answer.clue2?.points ?? 0) +
+        (answer.clue3?.points ?? 0) +
+        (answer.clue4?.points ?? 0)
+      );
+    }
+    return 0;
+  }
+
+  allPoints(team: string): number {
+    let totalPoints = 0;
+
+    for (let i = 0; i <= this.questions.length; i++) {
+      totalPoints += this.answerPoints(team, i);
+    }
+
+    return totalPoints;
   }
 }

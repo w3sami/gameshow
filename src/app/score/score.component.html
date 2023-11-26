@@ -1,0 +1,23 @@
+<div class="teams">
+  <div *ngFor="let team of questionsService.teams" class="team">
+    <div>
+      {{ team }}
+      {{ questionsService.allPoints(team) }}
+      <button
+        *ngIf="questionsService.teamNameMode"
+        (click)="questionsService.removeTeam(team)"
+      >
+        remove
+      </button>
+    </div>
+
+    <div>{{ questionsService.answerPoints(team) }}</div>
+    <div
+      *ngFor="let clue of getClueKeys()"
+      [class.correct]="questionsService.answers[questionsService.questionIndex]?.[team]?.[clue]?.correct"
+      (click)="questionsService.correctAnswer(team, clue)"
+    >
+      {{ questionsService.answers[questionsService.questionIndex]?.[team]?.[clue]?.answer }}
+    </div>
+  </div>
+</div>

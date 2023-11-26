@@ -1,17 +1,47 @@
-<div class="question q{{ questionIndex + 1 }}" *ngIf="currentQuestion">
-  <h2>#{{ questionIndex + 1 }} {{ currentQuestion.topic }}</h2>
+<div
+  class="question q{{ questionsService.questionIndex + 1 }}"
+  [class.scoreMode]="questionsService.scoreMode"
+  *ngIf="!questionsService.teamNameMode && questionsService.currentQuestion"
+>
+  <h2>
+    #{{ questionsService.questionIndex + 1 }}
+    {{ questionsService.currentQuestion.topic }}
+  </h2>
 
   <div class="clues">
-    <ng-container *ngFor="let clue of currentQuestion?.clues; let i = index">
-      <div class="clue clue{{ clueIndex }}" *ngIf="clueIndex > i">
+    <ng-container
+      *ngFor="
+        let clue of questionsService.currentQuestion?.clues;
+        let i = index
+      "
+    >
+      <div
+        class="clue clue{{ questionsService.clueIndex }}"
+        *ngIf="questionsService.clueIndex > i || questionsService.scoreMode"
+      >
         <img *ngIf="clue.img" [src]="clue.img" alt="Clue Image" />
         <p *ngIf="clue.text">{{ clue.text }}</p>
       </div>
     </ng-container>
   </div>
 
-  <div class="teams">
-    <div *ngFor="let team of teams">
+  <div class="teams" *ngIf="!questionsService.scoreMode">
+    <div
+      *ngFor="let team of questionsService.teams"
+      [class.answered]="hasCurrentAnswer(team)"
+    >
+      {{ team }}
+    </div>
+  </div>
+  <app-score *ngIf="questionsService.scoreMode"></app-score>
+</div>
+<div class="question" *ngIf="questionsService.teamNameMode">
+  <img class="qr" src="assets/qr.png" alt="QR Code" />
+  <div class="teams" *ngIf="!questionsService.scoreMode">
+    <div
+      *ngFor="let team of questionsService.teams"
+      [class.answered]="hasCurrentAnswer(team)"
+    >
       {{ team }}
     </div>
   </div>

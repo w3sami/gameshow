@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { QuestionsService } from '../shared/questions.service';
+import { IAnswer, QuestionsService } from '../shared/questions.service';
 
 @Component({
   selector: 'app-player',
@@ -12,6 +12,14 @@ export class PlayerComponent {
 
   constructor(public questionsService: QuestionsService) {
     this.teamName = localStorage.getItem('teamName') || '';
+  }
+
+  getCurrentAnswer(): string | undefined {
+    const clueIndex = ('clue' +
+      this.questionsService.clueIndex) as keyof IAnswer;
+    return this.questionsService.answers[this.questionsService.questionIndex]?.[
+      this.teamName
+    ]?.[clueIndex]?.answer;
   }
 
   submit() {

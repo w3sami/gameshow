@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IQuestion, QuestionsService } from '../shared/questions.service';
+import { IAnswer, QuestionsService } from '../shared/questions.service';
 
 @Component({
   selector: 'app-game',
@@ -7,21 +7,13 @@ import { IQuestion, QuestionsService } from '../shared/questions.service';
   styleUrls: ['./game.component.scss'],
 })
 export class GameComponent {
-  constructor(private questionsService: QuestionsService) {}
+  constructor(public questionsService: QuestionsService) {}
 
-  get teams(): string[] {
-    return this.questionsService.teams;
-  }
-
-  get questionIndex(): number {
-    return this.questionsService.questionIndex;
-  }
-
-  get clueIndex(): number {
-    return this.questionsService.clueIndex;
-  }
-
-  get currentQuestion(): IQuestion | undefined {
-    return this.questionsService.currentQuestion;
+  hasCurrentAnswer(team: string): boolean {
+    const clueIndex = ('clue' +
+      this.questionsService.clueIndex) as keyof IAnswer;
+    return !!this.questionsService.answers[
+      this.questionsService.questionIndex
+    ]?.[team]?.[clueIndex]?.answer;
   }
 }

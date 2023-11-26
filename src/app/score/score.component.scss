@@ -1,0 +1,23 @@
+.teams {
+  .team {
+    display: grid;
+    grid-template-columns: 1fr 30px 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    > div { /* Assuming each grid item is a div, modify as needed */
+      border: 1px solid #ccc; /* Light grey border */
+      background-color: #f9f9f9; /* Light grey background */
+      padding: 8px; /* Padding for content inside grid items */
+      text-align: center; /* Center-align text */
+      &:first-child {
+        background-color: #afc0e8;
+      }
+      &:nth-child(1) {
+        background-color: #afc0e8;
+      }
+      &.correct {
+        background-color: gold;
+      }
+    }
+    margin-bottom: 10px;
+  }
+}
