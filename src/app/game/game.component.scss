@@ -1,11 +1,46 @@
 * {
   box-sizing: border-box;
 }
+@keyframes opacity {
+  0%, 20%, 90%, 100% {
+    opacity: 1;
+  }
+
+  30%, 80% {
+    opacity: 0;
+  }
+}
+
+
 .question {
+  background: url('/assets/celebcity.jpg') #b52b22 50%;
+  color: #FAF4F4FF;
+  div {
+    color: black;
+  }
   display: flex;
   flex-direction: column;
   height: 100vh;
   font-size: 20px;
+  position: relative;
+  .banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #b52b22;
+    overflow: hidden;
+
+    animation: opacity 10s ease-in-out infinite both;
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
 
   .qr {
     flex: 0 0 60%;
@@ -43,12 +78,14 @@
     margin-bottom: 10px;
 
     .clue {
-      border: 1px solid #ccc;
       display: flex;
       align-items: center;
       justify-content: center;
       height: 100%;
       padding: 5%;
+      background: rgba(9, 142, 30, 0.96);
+      color: white;
+      box-shadow: 1px 1px 41px 9px #000f0970;
 
       img {
         max-width: 100%;
@@ -68,13 +105,14 @@
     text-align: center;
 
     .answered {
-      background: #c2e8af;
+      background: #c2e8afe5;
     }
     div {
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #ced5de;
+      background: #f7d6d6e5;
+      text-transform: uppercase;
     }
   }
 }

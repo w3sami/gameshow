@@ -37,6 +37,11 @@
 </div>
 <div class="question" *ngIf="questionsService.teamNameMode">
   <div class="qr"><img src="assets/qr.png" alt="QR Code" /></div>
+  <div class="banner">
+    <div class="logo">
+      <img src="assets/celebcity.jpg" alt="banner" />
+    </div>
+  </div>
   <div class="teams" *ngIf="!questionsService.scoreMode">
     <div
       *ngFor="let team of questionsService.teams"
