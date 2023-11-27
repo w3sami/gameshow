@@ -1,4 +1,8 @@
-<input [(ngModel)]="input" *ngIf="questionsService.password != input" />
+<input
+  [(ngModel)]="input"
+  *ngIf="questionsService.password != input"
+  type="Password"
+/>
 <div
   *ngIf="questionsService.passwordLoaded && questionsService.password == input"
 >

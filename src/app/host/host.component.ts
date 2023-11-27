@@ -14,16 +14,22 @@ export class HostComponent {
   nextQuestion() {
     const newIndex = this.questionsService.questionIndex + 1;
     if (newIndex < this.questionsService.questions.length) {
-      this.questionsService.updateQuestionIndex(newIndex);
       this.questionsService.updateClueIndex(0);
+      this.questionsService.updateQuestionIndex(newIndex);
+      if (this.questionsService.scoreMode) {
+        this.questionsService.updateClueIndex(4);
+      }
     }
   }
 
   previousQuestion() {
     const newIndex = this.questionsService.questionIndex - 1;
     if (newIndex >= 0) {
-      this.questionsService.updateQuestionIndex(newIndex);
       this.questionsService.updateClueIndex(0);
+      this.questionsService.updateQuestionIndex(newIndex);
+      if (this.questionsService.scoreMode) {
+        this.questionsService.updateClueIndex(4);
+      }
     }
   }
 

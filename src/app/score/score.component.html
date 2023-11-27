@@ -1,8 +1,7 @@
 <div class="teams">
   <div *ngFor="let team of questionsService.teams" class="team">
-    <div>
+    <div [class.scoreMode]="questionsService.scoreMode">
       {{ team }}
-      {{ questionsService.allPoints(team) }}
       <button
         *ngIf="questionsService.teamNameMode"
         (click)="questionsService.removeTeam(team)"
@@ -11,6 +10,9 @@
       </button>
     </div>
 
+    <div>
+      {{ questionsService.allPoints(team) }}
+    </div>
     <div>{{ questionsService.answerPoints(team) }}</div>
     <div
       *ngFor="let clue of getClueKeys()"

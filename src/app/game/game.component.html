@@ -17,10 +17,13 @@
     >
       <div
         class="clue clue{{ questionsService.clueIndex }}"
-        *ngIf="questionsService.clueIndex > i || questionsService.scoreMode"
+        [class.shown]="questionsService.clueIndex > i"
       >
-        <img *ngIf="clue.img" [src]="clue.img" alt="Clue Image" />
-        <p *ngIf="clue.text">{{ clue.text }}</p>
+        <div class="card front">
+          <img *ngIf="clue.img" [src]="clue.img" alt="Clue Image" />
+          <p *ngIf="clue.text">{{ clue.text }}</p>
+        </div>
+        <div class="card back"></div>
       </div>
     </ng-container>
   </div>

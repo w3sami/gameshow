@@ -49,21 +49,43 @@ export class QuestionsService {
       topic: 'a celebrity',
       clues: [
         {
-          text:
-            'born in austria soudob osb obsodb osb dob sbd obsob obodbo bobso dbosbo bosbdosb odbs',
+          text: 'The first step towards video calls',
         },
-        { text: 'a movie star' },
-        { text: 'a politician' },
-        { text: 'a bodybuilder' },
+        { text: 'Not Bell. Before Bell' },
+        { text: 'Think railroads' },
+        { text: 'S.O.S.' },
+      ],
+    },
+    {
+      topic: 'a popular beverage',
+      clues: [
+        { text: 'associated with health benefits' },
+        { text: 'called many times by its color' },
+        { text: 'commonly served hot or with bubbles' },
+        { text: 'originated in China' },
       ],
     },
     {
       topic: 'a celebrity',
       clues: [
-        { text: 'iq 220' },
-        { text: "he's dead" },
-        { text: 'a scientist' },
-        { text: 'escaped natzies' },
+        {
+          text:
+            'Inducted into the Rock and Roll Hall of Fame, but did not attend the ceremony',
+        },
+        { text: 'briefly a member of AC/DC' },
+        { text: 'Known for a wide vocal range and energetic performances' },
+        { text: 'Iconic long ginger hair and head band' },
+      ],
+    },
+    {
+      topic: 'a celebcity',
+      clues: [
+        {
+          text: 'A though MMA fighter, yet a really nice guy',
+        },
+        { text: 'Head honcho, in more ways than one' },
+        { text: 'Drives a Tesla' },
+        { text: 'Vienon Hellien' },
       ],
     },
   ];
