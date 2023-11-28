@@ -1,6 +1,17 @@
 <div class="teams">
-  <div *ngFor="let team of questionsService.teams" class="team">
-    <div [class.scoreMode]="questionsService.scoreMode">
+  <div
+    *ngFor="let team of questionsService.teams"
+    class="team"
+    [class.maxPoints]="questionsService.isTeamInTopPosition(team, 1)"
+    [class.secondPoints]="questionsService.isTeamInTopPosition(team, 2)"
+    [class.thirdPoints]="questionsService.isTeamInTopPosition(team, 3)"
+    [class.scoreMode]="questionsService.scoreMode"
+  >
+    <div class="allPoints">
+      {{ questionsService.allPoints(team) }}
+    </div>
+
+    <div class="teamName">
       {{ team }}
       <button
         *ngIf="questionsService.teamNameMode"
@@ -9,11 +20,7 @@
         remove
       </button>
     </div>
-
-    <div>
-      {{ questionsService.allPoints(team) }}
-    </div>
-    <div>{{ questionsService.answerPoints(team) }}</div>
+    <div class="answerPoints">{{ questionsService.answerPoints(team) }}</div>
     <div
       *ngFor="let clue of getClueKeys()"
       [class.correct]="questionsService.answers[questionsService.questionIndex]?.[team]?.[clue]?.correct"

@@ -43,6 +43,7 @@ export class QuestionsService {
   public answers: IAnswers = {};
   public password = '';
   public passwordLoaded = false;
+  public maxPoints: { [teamName: string]: number } = {};
 
   public questions: IQuestion[] = [
     {
@@ -245,6 +246,37 @@ export class QuestionsService {
       totalPoints += this.answerPoints(team, i);
     }
 
+    this.maxPoints[team] = totalPoints;
     return totalPoints;
+  }
+
+  hasMaxPoints(team: string): boolean {
+    let maxPoints = 0;
+    for (const key in this.maxPoints) {
+      if (this.maxPoints[key] > maxPoints) {
+        maxPoints = this.maxPoints[key];
+      }
+    }
+
+    return this.maxPoints[team] === maxPoints;
+  }
+
+  isTeamInTopPosition(team: string, position: number): boolean {
+    if (position < 1 || position > 3) {
+      throw new Error('Position must be between 1 and 3.');
+    }
+
+    const pointsArray = Object.entries(this.maxPoints).sort(
+      (a, b) => b[1] - a[1]
+    ); // Sort teams by points
+
+    const uniquePoints = [...new Set(pointsArray.map((item) => item[1]))]; // Unique point values
+
+    if (position > uniquePoints.length) {
+      return false; // Position is beyond the number of unique point levels
+    }
+
+    const targetPoints = uniquePoints[position - 1]; // Points for the target position
+    return this.maxPoints[team] === targetPoints;
   }
 }

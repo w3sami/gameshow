@@ -9,9 +9,11 @@ import { IAnswer, QuestionsService } from '../shared/questions.service';
 export class PlayerComponent {
   input: string = '';
   teamName: string = '';
+  previousAnswer: string = '';
 
   constructor(public questionsService: QuestionsService) {
     this.teamName = localStorage.getItem('teamName') || '';
+    this.previousAnswer = localStorage.getItem('previousAnswer') || '';
   }
 
   getCurrentAnswer(): string | undefined {
@@ -22,10 +24,14 @@ export class PlayerComponent {
     ]?.[clueIndex]?.answer;
   }
 
-  copyAnswer() {
-    if (!this.input) {
-      this.input = this.getCurrentAnswer() || '';
-    }
+  getPreviousAnswer(): string {
+    return this.previousAnswer != this.getCurrentAnswer()
+      ? this.previousAnswer
+      : '';
+  }
+
+  copyAnswer(answer: string) {
+    this.input = answer;
   }
   submit() {
     if (this.input) {
@@ -36,6 +42,8 @@ export class PlayerComponent {
         }
       } else {
         this.questionsService.addAnswer(this.teamName, this.input);
+        localStorage.setItem('previousAnswer', this.input);
+        this.previousAnswer = this.input;
       }
       this.input = ''; // Reset the input field after submission
     }

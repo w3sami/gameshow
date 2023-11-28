@@ -1,5 +1,5 @@
 <div class="player-input">
-  <div *ngIf="teamName">Tiimi: {{ teamName }}</div>
+  <h2 *ngIf="teamName">Tiimi: {{ teamName }}</h2>
   <div *ngIf="questionsService.teamNameMode">
     <h2>Anna tiimin nimi</h2>
     <input type="text" [(ngModel)]="input" (keyup.enter)="submit()" />
@@ -12,13 +12,24 @@
     </h2>
 
     <div *ngIf="questionsService.clueIndex && teamName">
-      <h2>Anna vastaus {{ questionsService.clueIndex }}</h2>
+      <h2>Anna vastaus</h2>
       <input type="text" [(ngModel)]="input" (keyup.enter)="submit()" />
       <button (click)="submit()">Lähetä</button>
-      <div *ngIf="getCurrentAnswer()" (click)="copyAnswer()">
-        Tämän hetken vastaus: <b>{{ getCurrentAnswer() }}</b> (klikkaa
-        muuttaaksesi)
-      </div>
+      <br /><br />
+      <h3>Vastasit: {{ getCurrentAnswer() }}</h3>
+      <button
+        *ngIf="getCurrentAnswer()"
+        (click)="copyAnswer(getCurrentAnswer()!)"
+      >
+        Muuta vastausta
+      </button>
+      <br /><br />
+      <button
+        *ngIf="getPreviousAnswer()"
+        (click)="copyAnswer(previousAnswer); submit()"
+      >
+        Käytä vastausta: {{ getPreviousAnswer() }}
+      </button>
     </div>
   </div>
 </div>

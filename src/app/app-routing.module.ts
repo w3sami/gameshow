@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'game', component: GameComponent },
   { path: 'host', component: HostComponent },
   { path: 'player', component: PlayerComponent },
-  { path: '', redirectTo: '/game', pathMatch: 'full' }, // Default route
+  { path: '', redirectTo: '/player', pathMatch: 'full' }, // Default route
 ];
 
 @NgModule({
