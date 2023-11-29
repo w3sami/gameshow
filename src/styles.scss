@@ -2,3 +2,20 @@ body {
   background: #b52b22;
   color: #eee;
 }
+canvas {
+  zoom: 2;
+}
+button {
+  background-color: #28a745; /* Green background */
+  color: #eee; /* Light text color for contrast */
+  border: 2px solid #28a745;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  /* Adding a subtle shadow for depth */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}

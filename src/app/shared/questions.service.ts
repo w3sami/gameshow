@@ -44,6 +44,7 @@ export class QuestionsService {
   public password = '';
   public passwordLoaded = false;
   public maxPoints: { [teamName: string]: number } = {};
+  public fireworks = false;
 
   public questions: IQuestion[] = [
     {
@@ -110,6 +111,7 @@ export class QuestionsService {
             answers: {},
             teamNameMode: false,
             scoreMode: false,
+            fireworks: false,
             // Add any other initial fields here
           });
         }
@@ -131,6 +133,7 @@ export class QuestionsService {
           this.scoreMode = data.scoreMode;
           this.password = data.password;
           this.passwordLoaded = true;
+          this.fireworks = data.fireworks;
         }
       });
   }
@@ -159,6 +162,11 @@ export class QuestionsService {
     this.updateFirestore();
   }
 
+  updateFireworks(value: boolean) {
+    this.fireworks = value;
+    this.updateFirestore();
+  }
+
   private updateFirestore() {
     this.firestore
       .collection('c4')
@@ -170,6 +178,7 @@ export class QuestionsService {
         answers: this.answers,
         teamNameMode: this.teamNameMode,
         scoreMode: this.scoreMode,
+        fireworks: this.fireworks,
       })
       .catch((error: any) => {
         console.error('Error updating Firestore: ', error);

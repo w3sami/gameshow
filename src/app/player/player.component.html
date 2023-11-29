@@ -1,4 +1,4 @@
-<div class="player-input">
+<div class="player-input" *ngIf="!questionsService.scoreMode">
   <h2 *ngIf="teamName">Tiimi: {{ teamName }}</h2>
   <div *ngIf="questionsService.teamNameMode">
     <h2>Anna tiimin nimi</h2>

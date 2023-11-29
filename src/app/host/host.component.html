@@ -4,15 +4,21 @@
   type="Password"
 />
 <div
-  *ngIf="
-    1 || (questionsService.passwordLoaded && questionsService.password == input)
-  "
+  *ngIf="questionsService.passwordLoaded && questionsService.password == input"
 >
   <div class="host-controls">
     <button (click)="previousQuestion()">Previous Question</button>
     <button (click)="nextQuestion()">Next Question</button>
     <button (click)="previousClue()">Previous Clue</button>
     <button (click)="nextClue()">Next Clue</button>
+
+    <button
+      class="right"
+      (click)="questionsService.updateFireworks(!questionsService.fireworks)"
+    >
+      fireworks
+      <span *ngIf="questionsService.fireworks">ON</span>
+    </button>
     <button
       class="right"
       (click)="
