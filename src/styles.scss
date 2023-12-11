@@ -19,3 +19,18 @@ button {
   /* Adding a subtle shadow for depth */
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
+.kilppari {
+  transform: scale(0.5);
+  position: absolute;
+  z-index: 100;
+  div {
+    margin-top: -10px;
+    margin-left: -100px;
+    display: block;
+    background: url("assets/turtle.png") no-repeat;
+    width: 144px;
+    height: 110px;
+    background-size: 200px;
+    background-position: -32px -27px;
+  }
+}

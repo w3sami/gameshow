@@ -3,6 +3,7 @@
   [class.scoreMode]="questionsService.scoreMode"
   *ngIf="!questionsService.teamNameMode && questionsService.currentQuestion"
 >
+  <div class="kilppari"><div></div></div>
   <h2>
     #{{ questionsService.questionIndex + 1 }}
     {{ questionsService.currentQuestion.topic }}
