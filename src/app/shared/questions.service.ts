@@ -51,20 +51,67 @@ export class QuestionsService {
       topic: 'a celebrity',
       clues: [
         {
-          text: 'The first step towards video calls',
+          text:
+            'Työskenteli ennen politiikkaa lakimiehenä ja yliopiston opettajana',
         },
-        { text: 'Not Bell. Before Bell' },
-        { text: 'Think railroads' },
-        { text: 'S.O.S.' },
+        {
+          text: 'Voitti Nobelin rauhanpalkinnon vuonna 2009',
+        },
+        {
+          text: 'Tunnettu puheistaan ja karismastaan',
+        },
+        {
+          text: 'Ensimmäinen afroamerikkalainen presidentti Yhdysvalloissa',
+        },
       ],
     },
     {
-      topic: 'a popular beverage',
+      topic: 'a celebcity',
       clues: [
-        { text: 'associated with health benefits' },
-        { text: 'called many times by its color' },
-        { text: 'commonly served hot or with bubbles' },
-        { text: 'originated in China' },
+        {
+          text:
+            'Pääsi Rock and Roll Hall of Fameen, muttei osallistunut seremonian',
+        },
+        {
+          text:
+            'Tunnettu laajasta äänialastaan ja energisestä esiintymisestään',
+        },
+        { text: 'Tuurasi AC/DC Angusta' },
+        { text: 'Ikoninen pitkä tukka ja punainen bandana' },
+      ],
+    },
+    {
+      topic: 'a celebrity',
+      clues: [
+        {
+          text: 'Menestyvä liikenainen, jolla on oma tuotemerkki',
+        },
+        {
+          text: 'Aktiivinen sosiaalisen median käyttäjä',
+        },
+        {
+          text: 'Amerikkalainen perijätär ja mediapersoona',
+        },
+        {
+          text: '"The Simple Life" -realitysarjan tähti',
+        },
+      ],
+    },
+    {
+      topic: 'a celebcity',
+      clues: [
+        {
+          text: 'Vietti lapsuutensa Irlannissa',
+        },
+        {
+          text: 'Menestyksekäs sooloura suositun duon hajottua',
+        },
+        {
+          text: 'Oma tyyli, joka yhdistää poppia ja iskelmää',
+        },
+        {
+          text: 'Vanha nainen hunningolla',
+        },
       ],
     },
     {
@@ -72,22 +119,178 @@ export class QuestionsService {
       clues: [
         {
           text:
-            'Inducted into the Rock and Roll Hall of Fame, but did not attend the ceremony',
+            '1980-luvun popmusiikin ikoni, julkaisi ensimmäisen albuminsa vuonna 1983',
         },
-        { text: 'briefly a member of AC/DC' },
-        { text: 'Known for a wide vocal range and energetic performances' },
-        { text: 'Iconic long ginger hair and head band' },
+        {
+          text: 'Käyttää usein provokatiivisia teemoja musiikissaan',
+        },
+        {
+          text: 'Toiminut myös ohjaajana ja tuottajana',
+        },
+        {
+          text: 'Popmusiikin kuningatar',
+        },
       ],
     },
     {
       topic: 'a celebcity',
       clues: [
         {
-          text: 'A though MMA fighter, yet a really nice guy',
+          text: 'Työskenteli kaupan alalla ennen poliittista uraansa',
         },
-        { text: 'Head honcho, in more ways than one' },
-        { text: 'Drives a Tesla' },
+        { text: 'Nyttemmin strateginen neuvonantajana TBIssä' },
+        { text: 'Siinä välissä Suomen nuorin pääministeri' },
+        { text: 'Puhtaat? jauhot pussissa' },
+      ],
+    },
+    {
+      topic: 'a celebcity',
+      clues: [
+        {
+          text: 'Itsenäinen ja päättäväinen fantasia hahmo',
+        },
+        {
+          text: 'Rikkoo prinsessastereotypioita',
+        },
+        {
+          text: 'Skotlantilainen prinsessa',
+        },
+        {
+          text: 'Tunnettu punaisista kiharoistaan ja jousiammuntataidoistaan',
+        },
+      ],
+    },
+    {
+      topic: 'a celebrity',
+      clues: [
+        {
+          text: 'Aloitti uransa televisiossa nuorena miehenä',
+        },
+        {
+          text: 'Työskenteli Martin Scorsesen kanssa useissa elokuvissa',
+        },
+        {
+          text: '"The Revenant" Oscar-voittaja',
+        },
+        {
+          text: 'Inception',
+        },
+      ],
+    },
+    {
+      topic: 'a celebrity',
+      clues: [
+        {
+          text: 'Yksi maailman menestyneimmistä kirjailijoista',
+        },
+        {
+          text:
+            'Kirjoitti ensimmäisen kirjan suositusta kirjasarjasta kahvilassa',
+        },
+        {
+          text: 'Vaikuttanut lastenkirjallisuuteen merkittävästi',
+        },
+        {
+          text: 'Avadakedavra!',
+        },
+      ],
+    },
+    {
+      topic: 'a celebcity',
+      clues: [
+        {
+          text: 'Osallistunut "Tanssii tähtien kanssa" -ohjelmaan',
+        },
+        {
+          text: 'Pitkä ura radiotoimittajana',
+        },
+        {
+          text: 'Suomalainen radio- ja TV-juontaja',
+        },
+        {
+          text: 'Tunnettu "Temptation Island Suomi" -ohjelman juontajana',
+        },
+      ],
+    },
+    {
+      topic: 'a celebrity',
+      clues: [
+        {
+          text: 'Filantrooppi, jätti Harvardin yliopiston kesken',
+        },
+        {
+          text: 'Yksi maailman rikkaimmista ihmisistä',
+        },
+        {
+          text: 'Tunnettu työstään tietokoneiden parissa',
+        },
+        {
+          text: 'Microsoftin perustaja',
+        },
+      ],
+    },
+    {
+      topic: 'a celebcity',
+      clues: [
+        {
+          text: 'Kivenkova MMA-ottelija, ja todella mukava tyyppi',
+        },
+        { text: 'Capo di tutti capi' },
+        { text: 'Ajelee Teslalla' },
         { text: 'Vienon Hellien' },
+      ],
+    },
+    {
+      topic: 'a celebrity',
+      clues: [
+        {
+          text:
+            'Brittiläinen laulaja-lauluntekijä, voittanut useita Grammy-palkintoja',
+        },
+        {
+          text: 'Tunnettu voimakkaasta äänestään',
+        },
+        {
+          text: 'Yksi myydyimmistä artisteista maailmassa',
+        },
+        {
+          text: 'James Bond -elokuvan tunnuskappaleen esittäjä',
+        },
+      ],
+    },
+    {
+      topic: 'a celebrity',
+      clues: [
+        {
+          text: 'Tunnettu erinomaisista vapaapotkuistaan',
+        },
+        {
+          text: 'Omistaa osan Inter Miami CF -jalkapalloseurasta',
+        },
+        {
+          text: 'Englannin maajoukkueen entinen kapteeni',
+        },
+        {
+          text: 'Työskennellyt myös mallina ja hyväntekeväisyydessä',
+        },
+      ],
+    },
+    {
+      topic: 'a celebrity',
+      clues: [
+        {
+          text: 'Kanadalainen poplaulaja, löydettiin YouTube-videoiden kautta',
+        },
+        {
+          text:
+            'Nuorin sooloartisti, jolla on ollut seitsemän Billboard Hot 100 -listan kärkisijaa',
+        },
+        {
+          text: 'Avioliitossa Hailey Baldwinin kanssa',
+        },
+        {
+          text: 'mm. "Baby" ja "Sorry" ovat hänen hittejään',
+        },
       ],
     },
   ];
